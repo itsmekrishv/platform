@@ -37,8 +37,9 @@ kubectl apply --filename argocd/apps.yaml
 
 
 # Building Package for Crossplane
-Step 1 up xpkg build
-Step 2 up login -u saikrishnav 
-Step 3 up repository create platform-k8s
-Step 4 up repo list
-Step 5 up xpkg push saikrishnav/platform-k8s:v0.1 -f platform-poc*.xpkg
+
+Step 1 up login -u saikrishnav 
+Step 2 up repository create platform-k8s
+Step 3 up repo list
+Step 4 VERSION_TAG=v0.0.1
+Step 5 up xpkg build --name platform-k8s.xpkg && up xpkg push xpkg.upbound.io/saikrishnav/platform-k8s:${VERSION_TAG} -f platform-k8s.xpkg
