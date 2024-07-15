@@ -27,6 +27,7 @@ metadata:
   labels:
     cluster-owner: saikrishna
 spec:
+  id: platform-cc-team
   compositionRef:
     name: cluster-gcp
   parameters:
