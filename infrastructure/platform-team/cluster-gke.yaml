@@ -17,3 +17,6 @@ spec:
     usage:
       # Usage is still in `alpha` and needs to be enabled by add `--set args='{"--enable-usages"}'` to `helm install`.
       enabled: true
+    apps:
+      traefik:
+        enabled: true

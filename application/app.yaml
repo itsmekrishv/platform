@@ -12,7 +12,7 @@ spec:
     repoURL: https://github.com/itsmekrishv/platform.git
     targetRevision: HEAD
   destination:
-    server: team-a
+    server: https://35.243.201.62
     namespace: production
   syncPolicy:
     automated:

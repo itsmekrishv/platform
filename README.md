@@ -66,7 +66,12 @@ kubectl create -f infrastructure/platform-team/cluster-gke.yaml
 
 crossplane beta trace clusterclaim platform-team --namespace platform-team
 
-- Create Cloud provider config
+- Once all available
+* kubectl get cluster -> Get the cluster name
+* gcloud container clusters get-credentials platform-team --region us-east1 --project galens-sandbox
+
+
+
 
 # Building Package for Crossplane
 
