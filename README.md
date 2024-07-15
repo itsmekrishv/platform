@@ -19,7 +19,7 @@ Kubernetes incluster provider for Cross plane control plane.
 - Create a secret gcp SA 
 kubectl create ns crossplane-system
 kubectl --namespace crossplane-system \
-    create secret generic aws-creds \
+    create secret generic gcp-creds \
     --from-file creds=./aws-creds.conf
 
 
@@ -59,6 +59,12 @@ echo http://argocd.127.0.0.1.nip.io
 kubectl create -f argocd/project.yaml
 
 kubectl apply --filename deploy-app.yaml
+
+- After deploying to ArgoCD
+run:
+kubectl create -f infrastructure/platform-team/cluster-gke.yaml
+
+crossplane beta trace clusterclaim platform-team --namespace platform-team
 
 - Create Cloud provider config
 
