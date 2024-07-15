@@ -20,7 +20,7 @@
 
 
 ---
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: devopsplatformpoc.com/v1alpha1
 kind: CompositeCluster
 metadata:
   name: platform-cc-team

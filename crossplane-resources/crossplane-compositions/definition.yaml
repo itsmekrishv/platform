@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: compositeclusters.devopstoolkitseries.com
+  name: compositeclusters.devopsplatformpoc.com
   labels:
     idp: 'true'
 spec:
@@ -10,7 +10,7 @@ spec:
   - value
   defaultCompositionRef:
     name: google-k8s
-  group: devopstoolkitseries.com
+  group: devopsplatformpoc.com
   names:
     kind: CompositeCluster
     plural: compositeclusters
