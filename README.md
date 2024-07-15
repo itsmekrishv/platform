@@ -58,7 +58,7 @@ echo http://argocd.127.0.0.1.nip.io
 
 kubectl create -f argocd/project.yaml
 
-kubectl apply --filename argocd/apps.yaml
+kubectl apply --filename deploy-app.yaml
 
 - Create Cloud provider config
 
