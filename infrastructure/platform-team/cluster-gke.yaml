@@ -1,12 +1,13 @@
-apiVersion: devopsplatformpoc.com/v1alpha1
-kind: CompositeCluster
+apiVersion: devopstoolkitseries.com/v1alpha1
+kind: ClusterClaim
 metadata:
   name: platform-team
-  labels:
-    cluster-owner: sai
 spec:
-  compositionRef:
-    name: google-k8s
+  id: platform-team
+  compositionSelector:
+    matchLabels:
+      provider: google
+      cluster: gke
   parameters:
     nodeSize: small
     minNodeCount: 1

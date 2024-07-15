@@ -7,7 +7,7 @@ metadata:
   name: google-k8s
 spec:
   compositeTypeRef:
-    apiVersion: devopsplatformpoc/v1alpha1
+    apiVersion: devopstoolkitseries/v1alpha1
     kind: CompositeCluster
   mode: Pipeline
   pipeline:
