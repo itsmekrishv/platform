@@ -70,28 +70,28 @@ spec:
       prune: true
       allowEmpty: true
 
----
+# ---
 
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: crossplane-compositions
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  project: production
-  source:
-    path: crossplane-resources/crossplane-compositions
-    repoURL: https://github.com/itsmekrishv/platform.git
-    targetRevision: HEAD
-  destination:
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
-      allowEmpty: true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: crossplane-compositions
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: production
+#   source:
+#     path: crossplane-resources/crossplane-compositions
+#     repoURL: https://github.com/itsmekrishv/platform.git
+#     targetRevision: HEAD
+#   destination:
+#     server: https://kubernetes.default.svc
+#   syncPolicy:
+#     automated:
+#       selfHeal: true
+#       prune: true
+#       allowEmpty: true
 
 ---
 
