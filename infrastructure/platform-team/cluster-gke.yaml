@@ -1,39 +1,15 @@
-# apiVersion: devopstoolkitseries.com/v1alpha1
-# kind: ClusterClaim
-# metadata:
-#   name: platform-team
-# spec:
-#   id: platform-team
-#   compositionSelector:
-#     matchLabels:
-#       provider: google
-#       cluster: gke
-#   parameters:
-#     nodeSize: medium
-#     minNodeCount: 1
-#     namespaces:
-#       - dev
-#       - production
-#     usage:
-#       # Usage is still in `alpha` and needs to be enabled by add `--set args='{"--enable-usages"}'` to `helm install`.
-#       enabled: true
-
-
----
-apiVersion: devopsplatformpoc.com/v1alpha1
-kind: CompositeCluster
+apiVersion: devopstoolkitseries.com/v1alpha1
+kind: ClusterClaim
 metadata:
-  name: platform-cc-team
-  labels:
-    cluster-owner: saikrishna
+  name: platform-team
 spec:
-  id: platform-cc-team
-  compositionRef:
-    name: cluster-gcp
+  id: platform-team
+  compositionSelector:
+    matchLabels:
+      provider: google
+      cluster: gke
   parameters:
-    # Possible values small, medium, large
     nodeSize: small
-    # version: "1.20"
     minNodeCount: 1
     namespaces:
       - dev
