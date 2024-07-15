@@ -1,0 +1,26 @@
+
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: basic-topology
+  namespace: examples
+spec:
+  components:
+    - name: nginx-basic
+      type: webservice
+      properties:
+        image: nginx
+      traits:
+        - type: expose
+          properties:
+            port: [80]
+  policies:
+    - name: topology-local-clusters
+      type: topology
+      properties:
+        clusters: ["local"]
+
+# vela status basic-topology -n examples
+# vela logs basic-topology -n examples 
+# vela exec basic-topology -n examples -it -- ls
+# vela port-forward basic-topology -n examples 8080:80

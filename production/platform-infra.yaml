@@ -1,20 +1,18 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: platform-prod
+  name: platform-infra
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: production
   source:
+    path: infrastructure/platform-team
     repoURL: https://github.com/itsmekrishv/platform.git
     targetRevision: HEAD
-    path: production
   destination:
     server: https://kubernetes.default.svc
-    namespace: platform-team
   syncPolicy:
     automated:
       selfHeal: true

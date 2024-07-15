@@ -1,0 +1,43 @@
+# vela addon enable fluxcd
+# vela show helm
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: helm-redis
+spec:
+  components:
+    - name: redis
+      type: helm
+      properties:
+        repoType: "helm"
+        url: "https://charts.bitnami.com/bitnami"
+        chart: "redis"
+        version: "17.7.3"
+        values: 
+          master:
+            persistence:
+              size: 16Gi
+          replica:
+            persistence:
+              size: 16Gi
+
+# vela up -f https://kubevela.io/example/applications/app-with-chart-redis.yaml
+
+# vela status helm-redis
+
+---
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: hello-kubernetes
+spec:
+  components:
+    - name: hello-kubernetes
+      type: helm
+      properties:
+        repoType: "helm"
+        url: "https://wangyikewxgm.github.io/my-charts/"
+        chart: "hello-kubernetes-chart"
+        version: "0.1.0"
+        valuesFiles:
+          - "values-production.yaml"

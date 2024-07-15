@@ -1,9 +1,9 @@
-apiVersion: devopstoolkitseries.com/v1alpha1
+apiVersion: devopsplatformpoc.com/v1alpha1
 kind: ClusterClaim
 metadata:
-  name: platform-gke
+  name: platform-team
 spec:
-  id: platform-gke
+  id: platform-team
   compositionSelector:
     matchLabels:
       provider: google
@@ -11,6 +11,6 @@ spec:
   parameters:
     nodeSize: small
     minNodeCount: 1
-    namespaces:
-      - dev
-      - production
+    # namespaces:
+    #   - dev
+    #   - production
