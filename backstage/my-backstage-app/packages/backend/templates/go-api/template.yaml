@@ -58,7 +58,7 @@ spec:
       action: github:actions:dispatch
       input:
         workflowId: go_api.yaml
-        repoUrl: 'github.com?repo=crossplane-gke&owner=samgabrail'
+        repoUrl: 'github.com?repo=platform&owner=itsmekrishv'
         branchOrTagName: 'main'
         workflowInputs:
           #imageName: ${{ parameters.imageName }}
