@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: go-api
-  title: New Go API
+  title: Hello World Go API
   description: Deploy a New Go API
 spec:
   owner: user:guest
