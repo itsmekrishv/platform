@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: gke-cluster
-  title: New GKE Cluster
+  title: Platform GKE Cluster
   description: Deploy a New GKE Cluster using Crossplane
 spec:
   owner: user:guest
@@ -80,7 +80,7 @@ spec:
       action: github:actions:dispatch
       input:
         workflowId: deploy_with_argocd.yaml
-        repoUrl: 'github.com?repo=crossplane-gke&owner=samgabrail'
+        repoUrl: 'github.com?repo=platform&owner=itsmekrishv'
         branchOrTagName: 'main'
         workflowInputs:
           clusterName: ${{ parameters.clusterName }}
