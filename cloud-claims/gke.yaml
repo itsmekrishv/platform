@@ -1,0 +1,19 @@
+apiVersion: devopstoolkitseries.com/v1alpha1
+kind: ClusterClaim
+metadata:
+  name: platform-team-gke
+spec:
+  id: platform-team-gke
+  compositionSelector:
+    matchLabels:
+      provider: google
+      cluster: gke
+  parameters:
+    nodeSize: small
+    minNodeCount: 1
+    version: "1.29"
+    apps:
+      traefik:
+        enabled: true
+  writeConnectionSecretToRef:
+    name: platform-team-gke

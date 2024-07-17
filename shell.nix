@@ -13,5 +13,6 @@
     teller
     crossplane-cli
     kubernetes-helm
+    ngrok
   ];
 }

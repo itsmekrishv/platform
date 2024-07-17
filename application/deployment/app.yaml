@@ -20,7 +20,7 @@ spec:
     - type: autoscaler
       properties:
         min: 3
-    - type: ingress
+    - type: traefik
       properties:
         domain: localhost
         http:

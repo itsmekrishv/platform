@@ -1,14 +1,14 @@
-global:
-  domain: argocd.127.0.0.1.nip.io
+# global:
+#   domain: argocd.127.0.0.1.nip.io
 configs:
   cm:
     application.resourceTrackingMethod: annotation
     timeout.reconciliation: 60s
-  params:
-    "server.insecure": true
-server:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-  extraArgs:
-    - --insecure
+#   params:
+#     "server.insecure": true
+# server:
+#   ingress:
+#     enabled: true
+#     ingressClassName: nginx
+#   extraArgs:
+#     - --insecure

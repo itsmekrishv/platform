@@ -70,6 +70,26 @@ crossplane beta trace clusterclaim platform-team --namespace platform-team
 * kubectl get cluster -> Get the cluster name
 * gcloud container clusters get-credentials platform-team --region us-east1 --project galens-sandbox
 
+* argocd cluster add \
+    $(kubectl config current-context) \
+    --name $TEAM_NAME
+
+* export SERVER_URL=$(kubectl config view \
+    --minify \
+    --output jsonpath="{.clusters[0].cluster.server}")
+
+Update the application argo apps with the new cluster name
+
+https://kubevela.io/docs/installation/kubernetes/
+
+vela install
+
+vela addon enable velaux
+vela port-forward addon-velaux -n vela-system
+or
+vela port-forward -n vela-system addon-velaux 8000:8000
+
+vela addon enable traefik
 
 
 
