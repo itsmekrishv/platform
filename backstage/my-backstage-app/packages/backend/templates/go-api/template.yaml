@@ -23,17 +23,17 @@ spec:
     - title: Basic API Configuration
       required:
         - apiName
-        - imageName
+        # - imageName
       properties:
         apiName:
           title: API Name
           type: string
           description: The name of the API
           ui:autofocus: true
-        imageName:
-          title: Container Image Name
-          type: string
-          description: The name of your container image
+        # imageName:
+        #   title: Container Image Name
+        #   type: string
+        #   description: The name of your container image
 
   steps:
     - id: fetch-base
@@ -42,7 +42,7 @@ spec:
       input:
         url: ./content
         values:
-          imageName: ${{ parameters.imageName }}
+          imageName: "wanghkkk/go-hello-world:v1.1"
           apiName: ${{ parameters.apiName }}
     # This step publishes the contents of the working directory to GitHub.
     - id: publish
@@ -50,7 +50,7 @@ spec:
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: This is ${{ parameters.imageName }}
+        description: This is wanghkkk/go-hello-world:v1.1
         repoUrl: ${{ parameters.repoUrl }}
     # Start a GitHub Action to build our API
     - id: github-action
@@ -61,10 +61,10 @@ spec:
         repoUrl: 'github.com?repo=crossplane-gke&owner=samgabrail'
         branchOrTagName: 'main'
         workflowInputs:
-          imageName: ${{ parameters.imageName }}
+          #imageName: ${{ parameters.imageName }}
           apiName: ${{ parameters.apiName }}
           repoURLforArgo: ${{ steps['publish'].output.remoteUrl }}
-          k8sClusterURLforArgo: https://34.172.166.21 # you will need to update this depending on what cluster you want your developers to deploy apps to
+          k8sClusterURLforArgo: https://34.148.208.64 # you will need to update this depending on what cluster you want your developers to deploy apps to
     # The final step is to register our new component in the catalog.
     - id: register
       name: Register
