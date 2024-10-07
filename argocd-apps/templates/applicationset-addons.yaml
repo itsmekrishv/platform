@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ .Values.addonAppName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  generators:
+  - git:
+      repoURL: {{ .Values.git.repoUrl | quote }}
+      revision: {{ .Values.git.repoBranch | quote }}
+      directories:
+        - path: {{ .Values.git.addonDirPath | quote }}
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.git.repoUrl | quote }}
+        targetRevision: {{ .Values.git.repoBranch | quote }}
+        path: '{{path}}'
+        helm:
+          ignoreMissingValueFiles: true
+          valueFiles:
+            - 'values.yaml'
+            - '../../global-values/{{path.basename}}/values.yaml'
+            - '../../global-values/{{path.basename}}/values-aws.yaml'
+            - '../../../reltio-cloud-envs/aws/regions/us-east-1/foxtrot-spoke-cluster-1/addons/{{path.basename}}-values.yaml'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true
+  # syncPolicy:
+  #   preserveResourcesOnDeletion: true 

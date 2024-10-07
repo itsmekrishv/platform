@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ .Values.reltioAppName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  generators:
+    - git:
+        repoURL: {{ .Values.git.repoUrl | quote }}
+        revision: {{ .Values.git.repoAppBranch | quote }}
+        directories:
+          - path: 'apps-provider/reltio-cloud-envs/{{ .Values.cloud }}/regions/{{ .Values.region }}/{{ .Values.clusterName }}/reltio-envs/*'
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.git.repoUrl | quote }}
+        targetRevision: {{ .Values.git.repoAppBranch | quote }}
+        path: 'charts/reltio'
+        helm:
+          ignoreMissingValueFiles: true
+          valueFiles:
+            - values.yaml
+            - common-service-values.yaml
+            - dataload-values.yaml
+            - misc-values.yaml
+            - '../../apps-provider/reltio-cloud-envs/{{ .Values.cloud }}/regions/{{ .Values.region }}/{{ .Values.clusterName }}/reltio-envs/{{path.basename}}/values.yaml'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true
+  syncPolicy:
+    preserveResourcesOnDeletion: true 

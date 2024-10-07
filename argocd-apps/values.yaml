@@ -1,0 +1,14 @@
+
+cloud: "aws"
+region: us-east-1
+clusterName: change-me
+reltioAppName: change-me
+addonAppName: change-me
+namespace: argocd
+git:
+  repoUrl: "git@bitbucket.org:reltio-ondemand/compute-app.git"
+  repoBranch: "feature/monorepo"
+  addonDirPath: "apps-provider/addons/charts/*"
+  repoAppBranch: "feature/monorepo"
+  
+
